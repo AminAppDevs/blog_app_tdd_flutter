@@ -1,8 +1,10 @@
+import 'package:blog_app_tdd/core/error/failures.dart';
 import 'package:blog_app_tdd/features/posts/domain/entities/post.dart';
+import 'package:dartz/dartz.dart';
 
 abstract class PostsRepository {
-  Future<List<Post>> getAllPosts();
-  Future<bool> deletePost(int id);
-  Future<bool> updatePost(Post post);
-  Future<bool> addPost(Post post);
+  Future<Either<Failure, List<Post>>> getAllPosts();
+  Future<Either<Failure, Unit>> deletePost(int id);
+  Future<Either<Failure, Unit>> updatePost(Post post);
+  Future<Either<Failure, Unit>> addPost(Post post);
 }
